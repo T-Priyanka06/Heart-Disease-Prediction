@@ -1,0 +1,26 @@
+# Feature Scaling, required by SVM and KNN algorithms
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+X_train = sc.fit_transform(X_train)
+X_test = sc.transform(X_test)
+
+# Import SVM classification model from sklearn
+from sklearn.svm import SVC
+SV_classifier = SVC(kernel='linear')
+SV_classifier.fit(X_train, y_train)
+y_predicted = SV_classifier.predict(X_test)
+y_predicted
+
+# Evaluate the model
+print("------------------------------------------------------") 
+print("Confussion Matrix")
+print("------------------------------------------------------")
+print(confusion_matrix(y_test,y_predicted))
+print("------------------------------------------------------")
+print("Classification Report")
+print("------------------------------------------------------")
+print(classification_report(y_test,y_predicted))
+print("------------------------------------------------------")
+SV_accuracy = round(accuracy_score(y_test, y_predicted), 2)
+print("Overall accuracy score: " + str(SV_accuracy))
+print("------------------------------------------------------")
